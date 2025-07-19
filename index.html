@@ -8,74 +8,320 @@
     <meta name="keywords" content="javascript, ライブラリ, jquery, chart.js">
 
     <!-- cssとの紐づけ。相対パスで記述する。 -->
-    <!-- <link rel="stylesheet" href="./CSS/main.css"> -->
+    <link rel="stylesheet" href="./css/main.css">
 
-    <title>第13回javascriptライブラリ</title>
+    <title>日常から生まれたばけもの図鑑</title>
 
 </head>
 
 <body>
     <div class="container">
 
-        <header>
-            <h1 id="top">コンピューター・リテラシーⅡ</h1>
+        <header id="header">
+            <p id="link-home"></p>
+            <h1 id="top">日常から生まれたばけもの図鑑</h1>
             <nav class="gnav">
                 <ul>
-                    <li>ホーム</li>
-                    <li>タグリファレンス</li>
-                    <li>問い合わせ</li>
+                    <li><a href="#link-home">ホーム</a></li>
+                    <li><a href="#link-sakuin">索引</a></li>
+                    <li><a href="#link-bakemono">ばけもの一覧</a></li>
+                    <li><a href="#link-idea">アイデア募集</a></li>
                 </ul>
             </nav>
+            <a href="#link-bottom">ページの底へワープする</a>
         </header>
 
-        <main>
+        <aside id="aside">
             <section>
-                <h2>jQuery</h2>
+                <h2 id="link-sakuin">索引</h2>
+                <ol>
+                    <li><a href="#link-aiueo">あ行</a></li>
+                    <li><a href="#link-k">か行</a></li>
+                    <li><a href="#link-s">さ行</a></li>
+                    <li><a href="#link-t">た行</a></li>
+                    <li><a href="#link-n">な行</a></li>
+                    <li><a href="#link-h">は行</a></li>
+                    <li><a href="#link-m">ま行</a></li>
+                    <li><a href="#link-y">や行</a></li>
+                    <li><a href="#link-r">ら行</a></li>
+                    <li><a href="#link-w">わ行</a></li>
+                </ol>
+            </section>
+            <section>
+                <h2 id="link-toy">無意味こそ意味</h2>
+                <p id="magic">きみも今日から魔法使い♪</p>
+                <p id="hello">医者が念仏</p>
+                <ul>
+                    <li><button type="button" onclick="toggle()">バルス！</button></li>
+                    <li><button type="button" onclick="slide()">リーテ・ラトバリタ・ウルス・アリアロス・バル・ネトリール</button></li>
+                    <li><button type="button" onclick="hello(0)">ハンバーガー</button></li>
+                    <li><button type="button" onclick="hello(1)">担々麺＋あんかけ麺</button></li>
+                    <li><button type="button" onclick="hello(2)">ケチュア語</button></li>
+                    <li><button type="button" onclick="hello(3)">バ○○経済</button></li>
+                    <li><button type="button" onclick="hello(4)">ルンダ☆ルンダ</button></li>
+                </ul>
+            </section>
+        </aside>
+
+        <main id="main">
+            <section>
+                <h2>日常から生まれたばけもの図鑑とは</h2>
+                <p>日常生活で発見、または生み出したばけものをまとめた図鑑である。独断と偏見の塊であることが大前提なので、異論は受け付けない。</p>
+            </section>
+            <section id="link-bakemono">
+                <h2>ばけもの一覧</h2>
                 <div>
                     <section>
-                        <h3>セレクタ</h3>
-                        <div>
-                            <p id="test-p-1">ほげ</p>
-                            <p class="test-p-2">ほげほげ</p>
-                            <p id="test-p-3">ほげほげほげ</p>
-                        </div>
+                        <h3 id="link-aiueo">あ行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>行けたら行くわ</dt>
+                                    <dd>もはや断るときの言葉として浸透している。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>おごるおじさん</dt>
+                                    <dd>高齢者ばかりのツアー旅行で、若い人が混ざっているときにホタテをおごってくれる粋なおじさん。激レア。</dd>
+                                </dl>
+                                <img src="img/130026.jpg" alt="ホタテ" height="400" width="400">
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>推しの結婚</dt>
+                                    <dd>推しが結婚すると一定の人が撃沈する。
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-k">か行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>下半身で動く大学生</dt>
+                                    <dd>下心が透けて見えるためわかりやすい。気持ち悪い。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>かっぱ小僧</dt>
+                                    <dd>雨の日にわざわざ傘をささずに帰る小学生男子。「あ、おれ傘いらないから。」</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>キチガイポニー</dt>
+                                    <dd>この世界に生み落とされたことが嫌すぎて叫び声をあげ続けるポニー。元は人間だった。</dd>
+                                    <img src="img/130031.jpg" alt="キチガイポニー" height="400" width="400">
+                                    <dd>キチガイポニーの心の中のグラフ</dd>
+                                    <canvas id="myChart1"></canvas>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>好奇心</dt>
+                                    <dd>幸せに生きるためには自分の好奇心を信じなければならない。社会から押し付けられた「いい子」を目指すと病みの世界が待っている。</dd>
+                                    <img src="img/130030.jpg" alt="好奇心" height="400" width="700">
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>公然の秘密</dt>
+                                    <dd>修学旅行の夜、秘密だよと約束して言った好きな人が誰かは、次の日クラスの全員が知っている。</dd>
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-s">さ行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>じゃんけんマン</dt>
+                                    <dd>複数人いて物事が決まらないとき、突然現れてじゃんけんをさせる。「じゃあ、じゃんけんで決めよう。勝ったら○○ね。」と言う。</dd>
+                                </dl>
+                                <button type="button" onclick="janken(0)">ぐー</button>
+                                <button type="button" onclick="janken(1)">ちょき</button>
+                                <button type="button" onclick="janken(2)">ぱー</button>
+                                <p id="result">[じゃんけんの結果はここだぞ！さあ手を選びたまえ！]</p>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>先生に言うから！！</dt>
+                                    <dd>小学校で学級委員の女子が掃除の時間に言いがち。必殺技。効果は使えば使うほど薄れていく。</dd>
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-t">た行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>力こそパワー</dt>
+                                    <dd>力はパワーだと思います。だからこそ、力こそパワーでなければならないと思います。</dd>
+                                    <img src="img/130033.jpg" alt="力こそパワー" height="400" width="400">
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>つむじのほくろ</dt>
+                                    <dd>身内につむじにほくろがある人がいる。ここを押すとやる気がみなぎる。</dd>
+                                    <img src="img/130029_0.jpg" alt="つむじのほくろ" height="400" width="400">
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-n">な行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>なつの心</dt>
+                                    <dd>夏休み、勉強して自分を高めて、社会に都合のよいお金を生み出せる「人材」にならなければならない。しかしモヤモヤする。何かしなければならないとわかっていても、ゲームをして動画を見て食べて寝るだけの、怠惰なすねかじり人間の心。SNSからはキラキラ大学生の海の写真が流れてくる。劣等感の表現。
+                                    </dd>
+                                </dl>
+                                <img src="img/130027_0.jpg" alt="なつの心" height="400" width="650">
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>ね、ね、ね先生</dt>
+                                    <dd>語尾が全て「ね」。中学の理科の先生は、1時間に237回「ね」と言った。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>年中半袖</dt>
+                                    <dd>学年に一人はいる。たいてい風邪をひかないし、インフルエンザが流行しても生き残る。欠席者分の余った牛乳をすべて飲み干す。</dd>
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-h">は行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>放課</dt>
+                                    <dd>休み時間のこと。放課後は授業じゃね？と名古屋の子どもは思っている。放火って火つけてんじゃんwwwと言ってくるばけものがいる。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>ほほえみの心</dt>
+                                    <dd>就活、面接、それはうそつきとうそつきのCold War。どう相手を出し抜くかがカギだ。これは彼らの表情である。</dd>
+                                </dl>
+                                <img src="img/130028_0.jpg" alt="ほほえみの心" height="400" width="600">
+                            </li>
+                        </ul>
+
+                        <h3 id="link-m">ま行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>魔法陣ニキ</dt>
+                                    <dd>小中学生の頃に稀に現れる。一緒に誰かを呪ってくれる。初恋を奪っていった。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>無意識</dt>
+                                    <button type="button" onclick="fade()">消えよう</button>
+                                    <dd>人は常に無意識に人を傷つける可能性を秘めている。もはや何もしない方がいいかもしれない。</dd>
+                                    <img id="muisiki" src="img/130034.jpg" alt="無意識" height="400" width="400">
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-y">や行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>やまんば</dt>
+                                    <dd>保育園の遠足で森に入ったとき、大きなくぼみを指して先生が「これはやまんばのお風呂だよ。」と言った。トラウマ。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>雪子</dt>
+                                    <dd>雪の日にはしゃいで作った雪だるま。大好きだった亡くなったばっちゃの名前。</dd>
+                                    <img src="img/130035.jpg" alt="雪子" height="400" width="400">
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-r">ら行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt id="ranranru">ランランルー</dt><button type="button"
+                                        onclick="customAnimate()">みんなも一緒にやってみようよ！いくよ！</button>
+                                    <dd>某ファストフード店のキャラクターがうれしくなるとついやってしまう。小学生の間で大流行して禁止令が出される。意味は「しねしねきえろ」であるとされた。</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>レールをはずれたら終わり</dt>
+                                    <dd>この世界は一度「普通」のレールをはずれると、戻ることができない。不可逆。急げ、きみはまだ戻れる。</dd>
+                                    <img src="img/130032.jpg" alt="レールをはずれたら終わり" height="400" width="400">
+                                </dl>
+                            </li>
+                        </ul>
+
+                        <h3 id="link-w">わ行</h3>
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt>わすれもの</dt>
+                                    <dd>道端に突然現れた２つの柑橘類のわすれもの。ひとつしか拾われていないことに闇を感じる。どちらか片方しか助けないばけもの。</dd>
+                                    <img src="img/130036.jpg" alt="わすれもの" height="400" width="400">
+                                </dl>
+                            </li>
+                        </ul>
+
                     </section>
 
-                    <section>
-                        <h3>メソッド</h3>
-                        <div>
-                            <button type="button" onclick="toggle()">表示・非表示</button>
-                            <button type="button" onclick="slide()">スライド</button>
-                            <button type="button" onclick="fade()">フェード</button>
-                            <button type="button" onclick="color()">CSS操作</button>
-                            <button type="button" onclick="customAnimate()">カスタムアニメーション</button>
-
-                        </div>
-
+                    <section id="link-idea">
+                        <h2>アイデア募集</h2>
+                        <p>我こそはばけものを生み出せる！という人は、ここに入力してね。</p>
+                        <form action="index.html" method="post">
+                            <div>
+                                <label>
+                                    送信者名：
+                                    <input type="text" id="firstname" name="firstname" required>
+                                </label>
+                            </div>
+                            <div>
+                                <label for="remarks">内容：</label>
+                                <textarea name="remarks" id="remarks" cols="30" rows="10"></textarea>
+                            </div>
+                            <div>
+                                <input type="button" value="送信ッ！！！" id="send-data">
+                                <input type="reset">
+                            </div>
+                        </form>
                     </section>
-
                     <section>
-                        <h3>イベントハンドラ</h3>
+                        <h2>きみのアイデアをそのまま公開！</h2>
                         <div>
-                            <form action="">
-                                <input id="input-1" type="text">
-                            </form>
-
+                            きみの名前：<span id="display-firstname"></span>
                         </div>
+                        <div>
+                            内容：<span id="display-remarks"></span>
+                        </div>
+                        <p>もしかしてこのばけものはきみのことかな？</p>
                     </section>
                 </div>
-
             </section>
-            <section>
-                <h2>Chart.js</h2>
-            </section>
+            <p id="link-bottom"></p>
+            <a href="#link-home">ホームに戻る</a>
         </main>
 
-        <footer>
+        <footer id="footer">
             Copyright &copy; Kirara NARITA, ALL Rights Reserved.
         </footer>
 
     </div>
+
+    <script src="./js/main.js"></script>
 
     <!-- 外部のjavascriptを読み込む -->
     <!-- 読み込む順番 -->
